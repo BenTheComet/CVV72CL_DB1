@@ -1,0 +1,47 @@
+MariaDB
+create table Tulajdonos (
+Tkód char(3) primary key not null,
+név char(15) not null,
+Cím char(10),
+Telefon int(10));
+
+create table Auto (
+Rendszám char(7) primary key,
+Típus char(10) not null,
+Szín char(10),
+Kor int(2) check (Kor>0),
+Ár int(8),
+Tulaj char(3) not null,
+Foreign key (Tulaj) referneces Tulajdonos(TKód));
+
+describe Auto;
+
+show create table Auto;
+
+APEX
+create table Tulajdonos (
+Tkód char(3) primary key not null,
+név char(15) not null,
+Cím char(10),
+Telefon number(10));
+
+create table Auto (
+Rendszám char(7) primary key,
+Típus char(10) not null,
+Szín char(10),
+Kor number(2) check (Kor>0),
+Ár number(8),
+Tulaj char(3) not null,
+Foreign key (Tulaj) references Tulajdonos(TKód));
+
+
+
+	
+create table Személy(ID number(4), név varchar(30));
+alter table személy add szülév number(4);
+alter table személy rename column szülév to szüldátum; -oracle
+alter table személy change szülév szüldátum char(3); -MariaDB
+alter table személy modify id int(4) primary key;
+alter table személy drop primary key;
+alter table személy drop column szüldátum;
+rename személy to person;
